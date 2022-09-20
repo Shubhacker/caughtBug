@@ -16,20 +16,22 @@ var user = "caughtbugsql@caughtbugdev"
 var password = "RogStrix@1080"
 var database = "caughtbugsqldev"
 
-func DBSetup() {
+func DBSetup() (*sql.DB, error) {
 	// Build connection string
+	var db *sql.DB
 	connString := fmt.Sprintf("server=%s;user id=%s;password=%s;port=%d;database=%s;",
 		server, user, password, port, database)
 	var err error
 	// Create connection pool
 	db, err = sql.Open("sqlserver", connString)
 	if err != nil {
-		log.Fatal("Error creating connection pool: ", err.Error())
+		return db, err
 	}
 	ctx := context.Background()
 	err = db.PingContext(ctx)
 	if err != nil {
-		log.Fatal(err.Error())
+		return db, err
 	}
-	fmt.Printf("SQL Server Connected!")
+	log.Println("SQL Server Connected!")
+	return db, nil
 }
