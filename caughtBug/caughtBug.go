@@ -16,6 +16,7 @@ var database *sql.DB
 var err error
 
 func fetchBugInfo(w http.ResponseWriter, r *http.Request) {
+	log.Println("In API")
 	fmt.Fprintf(w, "TestRestAPI")
 	w.Header().Set("Content-Type", "application/json")
 	bugInfo, err := db.FetchBugInformation(database)
@@ -26,6 +27,7 @@ func fetchBugInfo(w http.ResponseWriter, r *http.Request) {
 }
 
 func fetchBugInfoWithFilter(w http.ResponseWriter, r *http.Request) {
+	log.Println("In api 2")
 	w.Header().Set("Content-Type", "application/json")
 	param := mux.Vars(r)
 	var bugFilter fields.BugFilter

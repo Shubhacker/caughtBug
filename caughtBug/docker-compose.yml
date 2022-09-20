@@ -1,0 +1,11 @@
+version: "3"
+services:
+  caughtbugsvc:
+          container_name: caught_bug
+          build:
+            context: .
+            dockerfile: dockerFile
+          ports:
+            - "8000:8000"
+          restart: unless-stopped
+          # environment: # Pass environment variables to the service
