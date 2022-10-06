@@ -1,4 +1,4 @@
-# 💫 About Me:
+# 💫 About Caught Bug:
 Public testing software where any one can post bugs which they faced in multiple platforms 
 
 
